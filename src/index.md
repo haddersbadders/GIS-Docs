@@ -14,4 +14,4 @@ Explore the interactive guides and ArcGIS maps below:
 {%- endfor -%}
 </ul>
 
-And that's all! 
+And that's all folks! 
