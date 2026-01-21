@@ -1,47 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css">
-
-
-<style>
-  /* Small tweaks to make ArcGIS look better with Water.css */
-  .arcgis-embed {
-    margin: 20px 0;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #ccc;
-  }
-  
- 
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | GIS Portal</title>
+  <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <style>
+    /* Ensure the footer stays at the bottom if content is short */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .main-wrapper {
+      flex: 1;
+    }
+    /* Simple ArcGIS spacing */
+    .arcgis-embed {
+      margin: 1.5rem 0;
+      border: 1px solid #ddd;
+    }
+  </style>
 </head>
 <body>
 
-    
-    <div class="document-wrapper">
-        <nav class="sidebar no-print">
-            <h3>Table of Contents</h3>
-            {{ content | toc | safe }}
-            <button class="print-btn" onclick="window.print()">Save as PDF</button>
-        </nav>
-
-       
-        
-        <main>
-            <h1>{{ title }}</h1>
-            {{ content | safe }}
-
-                
-        </main>
-     
+  <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item has-text-weight-bold" href="/">
+          🗺️ GIS WORKSHOPS
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item" href="/">Home</a>
+          <a class="navbar-item" href="https://github.com/haddersbadders/GIS-Docs" target="_blank">GitHub</a>
+        </div>
+      </div>
     </div>
-  
+  </nav>
 
+  <section class="section main-wrapper">
+    <div class="container">
+      <div class="columns">
+        
+        <aside class="column is-3 no-print">
+          <nav class="menu">
+            <p class="menu-label">Navigation</p>
+            <ul class="menu-list">
+              <li><a href="/" {% if page.url == "/" %}class="is-active"{% endif %}>Overview</a></li>
+            </ul>
+            <p class="menu-label">Workshops</p>
+            <ul class="menu-list">
+              {%- for item in collections.workshop -%}
+              <li>
+                <a href="{{ item.url }}" {% if item.url == page.url %}class="is-active"{% endif %}>
+                  {{ item.data.title }}
+                </a>
+              </li>
+              {%- endfor -%}
+            </ul>
+          </nav>
+        </aside>
+
+        <main class="column is-9">
+          <div class="content">
+            <h1 class="title">{{ title }}</h1>
+            {{ content | safe }}
+          </div>
+        </main>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>GIS Documentation</strong> by <a href="#">Your Name</a>. 
+        Built with <a href="https://11ty.dev">Eleventy</a> and <a href="https://bulma.io">Bulma</a>.
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
