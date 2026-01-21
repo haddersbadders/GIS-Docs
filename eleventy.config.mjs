@@ -28,6 +28,7 @@ export default async function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
 
   return {
+    pathPrefix: "/gis-docs/",
     dir: {
       input: "src",
       output: "_site",
