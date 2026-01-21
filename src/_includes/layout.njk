@@ -6,6 +6,7 @@
   <title>{{ title }} | GIS Portal</title>
   <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
   <style>
     /* Ensure the footer stays at the bottom if content is short */
     body {
@@ -67,6 +68,20 @@
         <main class="column is-9">
           <div class="content">
             <h1 class="title">{{ title }}</h1>
+            {% if toc %}
+<nav class="message is-info is-light no-print mb-6">
+  <div class="message-body p-0">
+    <details class="p-4">
+      <summary class="has-text-weight-bold is-clickable">
+        Table of Contents
+      </summary>
+      <div class="mt-3">
+        {{ content | toc | safe }}
+      </div>
+    </details>
+  </div>
+</nav>
+{% endif %}
             {{ content | safe }}
           </div>
         </main>

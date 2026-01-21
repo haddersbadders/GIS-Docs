@@ -24,8 +24,31 @@ export default async function(eleventyConfig) {
     </div>`;
   });
 
+// Ultilise the ArcGIS SDK
+eleventyConfig.addShortcode("arcgisComponent", (id, height = "600px") => {
+  return `
+    <arcgis-map item-id="${id}" style="height: ${height}">
+      <arcgis-zoom slot="top-left"></arcgis-zoom>
+      <arcgis-legend slot="bottom-right"></arcgis-legend>
+    </arcgis-map>
+    <script type="module" src="https://js.arcgis.com/4.31/map-components/map-components.esm.js"></script>
+  `;
+});
+
+
+  // Task Shortcodes
+  eleventyConfig.addPairedShortcode("task", function(content, title, type = "info") {
+  return `
+    <article class="message is-${type} mb-5">
+      <div class="message-header"><p>${title}</p></div>
+      <div class="message-body">${content}</div>
+    </article>`;
+});
+
+
   // 4. Files to pass through to _site
   eleventyConfig.addPassthroughCopy("src/css");
+   eleventyConfig.addPassthroughCopy("src/images");
 
   return {
     dir: {

@@ -2,6 +2,7 @@
 layout: layout.njk
 title: Practical 3 – Introduction to ArcGIS Pro
 tags: workshop
+toc: true
 ---
 
 ## Aims
@@ -27,3 +28,17 @@ You may find it useful to keep a copy of all practical workings so that you can 
 - **Use meaningful file names** when saving data. File names such as essay.doc or map.mxd do not tell you too much information about the file, particularly after some time has passed. Longer, more meaningful file names will help. E.g. TRP216_Individual_Report.doc or Practical2_SYAverageAge.mxd
 - Check your filestore to ensure you are not reaching the limit of your storage space. If you are you may need to archive older work and folders to a USB drive or a CD/DVD. It is also possible to save your work directly to a USB drive, you may find however that larger data files are slower to respond and load from these.
 - **Make sure you save your work frequently**.
+
+## Part 1: First steps with ArcGIS Pro
+
+{% task "We will start by downloading the data for Practical 3 Part 1.", "link" %}
+1. In your Week 4 Learning Materials folder, open the **Downloads for week 4** page.
+2. Download both data sets (**Vector_layers.zip** and **MSOA_2021_Sheff_TS007.zip**) by clicking on the three dots.
+3. Open a folder to view the downloaded zip file. **The files in the zip file need to be extracted so that you can access the data using the ArcGIS Pro software**.
+{% endtask %}
+
+{% task "Large files!", "warning" %}
+Files used for GIS are often large so will often come in a compressed format. When you see files with a .zip extension, they will need to be extracted before you can use them with GIS software. 
+
+To extract a compressed file, right-click on the .zip file and select Extract… or Extract All…
+{% endtask %}
