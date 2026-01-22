@@ -74,7 +74,7 @@ A **shapefile** is one of the most common file formats used in GIS. It is actual
 
 We are going to start by opening ArcGIS Pro and exploring the interface.
 
-{% task "Opening ArcGIS", "link" %}
+{% task "Opening ArcGIS", "danger" %}
 1. Open ArcGIS Pro from the managed desktop
 2. Click on the blue The University of Sheffield button and use your University login and password to sign in. You will also have to go through MFA.
 3. You should see an interface like the one below.
