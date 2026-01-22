@@ -1,0 +1,98 @@
+---
+layout: layout.njk
+---
+<link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
+<script src="https://js.arcgis.com/4.29/"></script>
+
+<div class="columns is-gapless mb-0" style="height: 80vh;">
+  <aside class="column is-3 has-background-white-bis p-4" style="border-right: 1px solid #ddd; overflow-y: auto;">
+    {{ content | safe }}
+    <hr>
+    <div id="feature-data">
+      <p class="has-text-grey-light is-italic">Click a map feature to see details...</p>
+    </div>
+  </aside>
+
+  <main class="column is-9">
+    <div id="viewDiv" style="height: 100%; width: 100%;"></div>
+  </main>
+</div>
+
+<div id="basemap-ui" class="select is-small is-hidden">
+  <select id="basemapSelect">
+    <option value="gray-vector">Light Gray</option>
+    <option value="hybrid">Satellite</option>
+    <option value="streets-vector">Streets</option>
+    <option value="topo-vector">Topographic</option>
+
+  </select>
+</div>
+
+<script>
+  require([
+  "esri/Map",
+  "esri/views/MapView",
+  "esri/widgets/Search",
+  "esri/layers/FeatureLayer"
+], function(Map, MapView, Search, FeatureLayer) {
+
+  const map = new Map({ basemap: "topo-vector" });
+
+  const view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [-1.47, 53.38],
+    zoom: 12
+  });
+
+  // Add the Search Widget (Top Right)
+  view.ui.add(new Search({ view: view }), "top-right");
+
+  // Add a sample Layer (e.g., UK National Parks or similar)
+  const trialLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/P3ePLMYs2RVChqtp/arcgis/rest/services/World_Cities/FeatureServer/0",
+    outFields: ["*"] // Ensure all data is pulled for the sidebar
+  });
+  map.add(trialLayer);
+
+  // 3. INTEGRATE THE BASEMAP TOGGLE (New Logic)
+    view.when(() => {
+      const toggle = document.getElementById("basemap-ui"); // The ID of your Bulma select
+      toggle.classList.remove("is-hidden");                // Make it visible
+      view.ui.add(toggle, "top-left");                      // Move it onto the map
+
+      document.getElementById("basemapSelect").addEventListener("change", (e) => {
+        map.basemap = e.target.value;
+      });
+    });
+
+ // THE SIDEBAR SYNC LOGIC
+view.on("click", (event) => {
+  view.hitTest(event).then((response) => {
+    // Filter to find our Sheffield Parks layer
+    const results = response.results.filter(r => r.graphic.layer === trialLayer);
+
+    if (results.length > 0) {
+      const attributes = results[0].graphic.attributes;
+      
+      // Update the Bulma Sidebar with Sheffield Data
+      document.getElementById("feature-data").innerHTML = `
+        <div class="box">
+          <h4 class="subtitle is-6 mb-1">Sheffield Green Space</h4>
+          <p class="title is-4">${attributes.SITE_NAME || "Unnamed Site"}</p>
+          <table class="table is-narrow is-fullwidth">
+            <tr><th>Type</th><td>${attributes.SITE_TYPE || "N/A"}</td></tr>
+            <tr><th>Managed By</th><td>${attributes.MANAGING_ORGANISATION || "Council"}</td></tr>
+          </table>
+          <p class="is-size-7 has-text-grey">ID: ${attributes.OBJECTID}</p>
+          <button class="button is-small is-fullwidth is-success mt-2">View Site Details</button>
+        </div>
+      `;
+      
+      const instr = document.getElementById("instruction-box");
+      if(instr) instr.classList.add("is-hidden");
+    }
+  });
+});
+});
+</script>
