@@ -1,8 +1,6 @@
 ---
-layout: layout.njk
 title: Regional GIS Assessment 2026
-tags: workshop
-toc: true
+
 ---
 
 ## Executive Summary

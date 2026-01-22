@@ -1,8 +1,6 @@
 ---
-layout: layout.njk
 title: Practical 3 – Introduction to ArcGIS Pro
-tags: workshop
-toc: true
+
 ---
 
 ## Aims

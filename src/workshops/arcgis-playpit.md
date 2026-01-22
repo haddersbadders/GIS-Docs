@@ -1,8 +1,5 @@
 ---
-layout: layout.njk
 title: ArcGIS Playpit
-tags: workshop
-toc: true
 ---
 This page is to demonstrate the ArcGIS Maps SDK for JavaScript. 
 
@@ -27,15 +24,7 @@ This page is to demonstrate the ArcGIS Maps SDK for JavaScript.
       center: [-1.4701, 53.3811] // Longitude, Latitude (Sheffield)
     });
   });
-  require(["esri/widgets/Search"], function(Search) {
-  const searchWidget = new Search({
-    view: view
-  });
-  // Add the widget to the top-right corner of the view
-  view.ui.add(searchWidget, {
-    position: "top-right"
-  });
-});
+  
 </script>
 
 ```js

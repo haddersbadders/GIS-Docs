@@ -1,5 +1,6 @@
 {
     "layout": "layout.njk",
     "tags": ["workshop"],
-    "permalink": "/workshops/{{ page.fileSlug }}/"
+    "permalink": "/workshops/{{ page.fileSlug }}/",
+    "toc": "true"
   }
