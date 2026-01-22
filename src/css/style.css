@@ -42,3 +42,17 @@
         box-shadow: none;
     }
 }
+
+/* Prevent Bulma from styling Prism code numbers */
+code[class*="language-"] .number {
+  align-items: flex-start;
+  background-color: transparent;
+  border-radius: 0;
+  display: inline;
+  font-size: inherit;
+  height: inherit;
+  margin-right: 0;
+  min-width: inherit;
+  padding: 0;
+  color: inherit; /* Or your Prism theme's number color */
+}
