@@ -27,13 +27,22 @@ Let's ahave a look at what some of the files do.
 
 **src/index.md** - the homepage markdown file. 
 
-**src/workshops/workshops.11tydata.json** - A *directory data file* used to apply front-matter to all markdown files in the directory. This one contains:
+**src/workshops/workshops.11tydata.json** - A *directory data file* used to inject front-matter into all markdown files in the directory. This one contains:
 
 ```
 {
-    "layout": "layout.njk",
-    "tags": ["workshop"],
-    "permalink": "/workshops/{{ page.fileSlug }}/",
-    "toc": "true"
+    "layout": "layout.njk", //applies the default layout
+    "tags": ["workshop"],   //adds the tag "workshop" which is used to collect and list workshops in the sidebar
+    "permalink": "/workshops/{{ page.fileSlug }}/", //defines the URL structure
+    "toc": "true"   //ensures the table of contents displays in the workshop page
   }
 ```
+**src/workshops/*.md** - All the markdown files for workshops. Add front-matter to the top of the file: 
+
+```
+---
+title: The title of the workshop
+---
+```
+The other front-matter is automatically inserted. Then add your markdown, shortcodes and even HTML! 
+
