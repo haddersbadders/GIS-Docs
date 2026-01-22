@@ -42,3 +42,79 @@ Files used for GIS are often large so will often come in a compressed format. Wh
 
 To extract a compressed file, right-click on the .zip file and select Extract… or Extract All…
 {% endtask %}
+
+{% task "Extracting the dataset", "link" %}
+1. Right-click the **Practical_3_Data_part1.zip** file and select **Extract All**…
+2. Extract the data to a suitable location for the module practicals, making a new folder if required. (Remember, if you are on the Managed Desktop to use your U: drive)
+
+{% endtask %}
+
+We will use the data you have downloaded to work through the remainder of this practical. 
+
+### The Shapefile
+
+Let’s start by simply having a look at the contents of the folder we extracted. This is a shapefile and is one of the most common file formats for spatial vector data. You can see that it is actually made up of several different files – this is important – and is why when you download a shapefile, you will always have to extract the contents first before you can work with it.
+
+**You also won’t be able to open any of the individual elements of the shapefile; in order to access the data in a shapefile, we need to use specialist software**. We are going to use **ArcGIS Pro** for this module but there are many other tools that can also be used.  
+
+{% task "What is a shapefile?", "success" %}
+A **shapefile** is one of the most common file formats used in GIS. It is actually a collection of files with a common filename. The individual components of a shapefile cannot be opened individually. To function, a shapefile **must** include: 
+
+- .shp - The main file that stores the feature geometry; required.
+- .shx - The index file that stores the index of the feature geometry; required.
+- .dbf - The dBASE table that stores the attribute information of features; required.
+
+**Optionally**, it may include (amongst others):
+
+- .prj - The file that stores the coordinate system information; used by ArcGIS.
+- .sbn and .sbx - The files that store the spatial index of the features.
+{% endtask %}
+
+##  Getting started with ArcGIS Pro
+
+We are going to start by opening ArcGIS Pro and exploring the interface.
+
+{% task "Opening ArcGIS", "link" %}
+1. Open ArcGIS Pro from the managed desktop
+2. Click on the blue The University of Sheffield button and use your University login and password to sign in. You will also have to go through MFA.
+3. You should see an interface like the one below.
+4. Create a new Map Project by clicking the ‘Map template’ icon, then fill out the dialog box to give the project a name and a location (I recommend a folder in your U: drive)
+
+![creating a new project in arcgis](/images/arcgis-new.png)
+
+Your new map project should look something like the one below:
+
+![newly created map in arcgis](/images/arcgis-map.png)
+
+{% endtask %}
+
+### Exploring the ArcGIS interface
+
+We are now going to explore the ArcGIS Pro interface. 
+
+<div id="image-map" style="height: 500px; width: 100%; border: 1px solid #ccc;"></div>
+
+<script>
+  var map = L.map('image-map', {
+    crs: L.CRS.Simple,
+    minZoom: -1
+  });
+
+  var bounds = [[0,0], [745,1181]]; // Define your image dimensions
+  var image = L.imageOverlay('/images/arcgis-interface-2.png', bounds).addTo(map);
+
+  map.fitBounds(bounds);
+
+  // Add Hotspots (y, x coordinates)
+  L.marker([710, 20]).addTo(map).bindPopup("<b>Project menu</b> - Provides access to application settings and other configurable properties.");
+  L.marker([200, 800]).addTo(map).bindPopup("<b>Secondary Tool</b>");
+</script>
+
+| Component | Description |
+| :--- | :--- |
+| 1. Project menu |	Provides access to application settings and other configurable properties. |
+| 2. The ribbon	Organizes tools on a series of tabs. | These are context dependent so will change depending on the type of data being used, for example |
+| 3. The command search box | Helps you find and open geoprocessing tools and run user interface commands. You can also access help topics related to your search terms. |
+| 4. The Contents panel | Displays layers related to the active view, which may be a map, a scene, or a layout, for example. |
+| 5. Map and Table view	| Views, such as the map in this example, are the primary work areas in ArcGIS Pro. Tables and scenes are also viewed here. |
+| 6. Catalog panel	| The items in a project can be managed in the Catalog pane. |

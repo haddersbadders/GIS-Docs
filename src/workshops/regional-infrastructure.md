@@ -24,4 +24,12 @@ console.log(`Filtering layers for: ${status}`);
 
 ## Components
 
+Needs API key.  But can be integrated so that the webpage can interact with the component, a bit more powerful than iframes. 
+
+Possibly install via npm.
+
+```liquid
+{% raw %}
 {% arcgisComponent "4cc9f0ba8e8c4d68b50c01c17efd4730" %}
+{% endraw %}
+```

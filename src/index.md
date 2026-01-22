@@ -18,3 +18,8 @@ Mediterranean, tundra, taiga, tropical, monsoon, arid, savanna. Stratosphere, bi
 ### Cartography and Mapping
 
 Cartography, contour line, orthographic projection, topography, GIS, GPS, Mercator, isoline. Coordinates, scale, magnetic declination, azimuth, meridian. Remote sensing, aerial photography, DEM, urban sprawl, population density. Geodetic datum, thematic map.
+
+<p>will it take <strong>html?</strong> <span class="icon"><i class="fas fa-arrow-right"></i></p> </span>
+
+
+
