@@ -48,7 +48,8 @@ eleventyConfig.addShortcode("arcgisComponent", (id, height = "600px") => {
 
   // 4. Files to pass through to _site
   eleventyConfig.addPassthroughCopy("src/css");
-   eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/js");
+  eleventyConfig.addPassthroughCopy("src/images");
 
   return {
     dir: {

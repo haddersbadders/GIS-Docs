@@ -49,6 +49,8 @@ To extract a compressed file, right-click on the .zip file and select Extract…
 
 We will use the data you have downloaded to work through the remainder of this practical. 
 
+
+
 ### The Shapefile
 
 Let’s start by simply having a look at the contents of the folder we extracted. This is a shapefile and is one of the most common file formats for spatial vector data. You can see that it is actually made up of several different files – this is important – and is why when you download a shapefile, you will always have to extract the contents first before you can work with it.
